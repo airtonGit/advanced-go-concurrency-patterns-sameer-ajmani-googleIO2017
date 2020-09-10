@@ -1,7 +1,7 @@
 package main
 
 
-type Subcripes interface{
+type Subscription interface{
   Close() error
 }
 
