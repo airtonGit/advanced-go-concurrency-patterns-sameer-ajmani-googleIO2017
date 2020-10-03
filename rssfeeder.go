@@ -9,6 +9,15 @@ type sub struct{
   closing chan chan error
 }
 
+func Subscripe(fetcher Fetcher) Subscription {
+  s := &sub{
+    fetcher: fetcher,
+    updates: make(chan Item), //for Updates
+  }
+  go s.loop()
+  return s
+}
+
 func (s *sub) Loop(){
   var err error //set when Fetch fails
   var fetchDelay time.Duration // initially 0 (no delay)
