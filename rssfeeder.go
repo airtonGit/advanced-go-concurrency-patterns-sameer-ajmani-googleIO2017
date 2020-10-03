@@ -18,6 +18,10 @@ func Subscripe(fetcher Fetcher) Subscription {
   return s
 }
 
+func (s *sub) Updates() <-chan Item {
+  return s.updates
+}
+
 func (s *sub) Loop(){
   var err error //set when Fetch fails
   var fetchDelay time.Duration // initially 0 (no delay)
