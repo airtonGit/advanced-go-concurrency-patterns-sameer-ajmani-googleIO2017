@@ -87,7 +87,7 @@ func main() {
 
 func (s *sub) Close(){
   errc := make(chan error)
-  s.closing <- errc
-  return <- errc
+  s.closing <- errc //envia channel para loop - sinalizando que deve parar
+  return <- errc //aguarda de loop que o mesmo parou e se tinha algum erro
 }
 
